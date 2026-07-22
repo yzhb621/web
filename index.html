@@ -1,9 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Yutian Zhang | Personal Website</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      color: #243047;
+      background: #f6f8fc;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    nav .container {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: #526ee8;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    nav a {
+      color: #243047;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #526ee8;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 90px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          #dfe5ff 0,
+          transparent 35%
+        ),
+        linear-gradient(135deg, #f7f9ff, #eef2ff);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .welcome {
+      color: #526ee8;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 12px 0;
+      color: #16203a;
+      font-size: clamp(45px, 7vw, 76px);
+      line-height: 1.1;
+    }
+
+    .hero h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: normal;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin-bottom: 30px;
+      color: #667085;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 25px;
+      border-radius: 30px;
+      background: #526ee8;
+      color: white;
+      text-decoration: none;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(82, 110, 232, 0.3);
+    }
+
+    .avatar {
+      width: 320px;
+      height: 320px;
+      margin: auto;
+      border: 10px solid white;
+      border-radius: 50%;
+      box-shadow: 0 20px 50px rgba(82, 110, 232, 0.25);
+      object-fit: cover;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      color: #16203a;
+      font-size: 36px;
+    }
+
+    .section-title p {
+      color: #7a8499;
+    }
+
+    .about-box,
+    .contact-box {
+      padding: 40px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 12px 35px rgba(31, 42, 68, 0.08);
+    }
+
+    #skills {
+      background: #edf1ff;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skill-list span {
+      padding: 12px 20px;
+      border-radius: 30px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(31, 42, 68, 0.08);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(31, 42, 68, 0.07);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #526ee8;
+    }
+
+    .card p {
+      color: #667085;
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    footer {
+      padding: 25px;
+      background: #16203a;
+      color: #d5daea;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      nav .container {
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 16px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .avatar {
+        width: 230px;
+        height: 230px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">Yutian Zhang</div>
+
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a href="#home">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About Me</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -11,20 +298,32 @@
   <header class="hero" id="home">
     <div class="container hero-content">
       <div>
-        <div class="welcome">HELLO, WELCOME TO MY WEBSITE</div>
-        <!-- Replace this with your name. -->
-        <h1>I'm Your Name</h1>
-        <!-- Replace this with your role or identity. -->
-        <h2>Student · Design Enthusiast · Explorer</h2>
+        <div class="welcome">
+          HELLO, WELCOME TO MY WEBSITE
+        </div>
+
+        <h1>I'm Yutian Zhang</h1>
+
+        <h2>
+          Student · Design Enthusiast · Explorer
+        </h2>
+
         <p>
-          I am passionate about learning new things and sharing my ideas through my work.
-          I hope this website helps you get to know me better.
+          I am passionate about learning new things and sharing
+          my ideas through my work. I hope this website helps
+          you get to know me better.
         </p>
-        <a class="button" href="#about">Learn More</a>
+
+        <a class="button" href="#about">
+          Learn More
+        </a>
       </div>
 
-      <!-- Place photo.jpg in the same folder as index.html. -->
-      <img class="avatar" src="photo.jpg" alt="Portrait of Your Name">
+      <img
+        class="avatar"
+        src="photo.jpg"
+        alt="Portrait of Yutian Zhang"
+      >
     </div>
   </header>
 
@@ -35,12 +334,15 @@
           <h2>About Me</h2>
           <p>Get to know me</p>
         </div>
+
         <div class="about-box">
           <p>
-            Hello! My name is Your Name. I am currently a student studying Your Subject.
-            I enjoy photography, travel, music, and design. I am responsible, curious,
-            and always ready to take on new challenges. In the future, I hope to continue
-            learning and growing in a field that I truly enjoy.
+            Hello! My name is Yutian Zhang. I am currently a
+            student studying Your Subject. I enjoy photography,
+            travel, music, and design. I am responsible, curious,
+            and always ready to take on new challenges. In the
+            future, I hope to continue learning and growing in a
+            field that I truly enjoy.
           </p>
         </div>
       </div>
@@ -52,6 +354,7 @@
           <h2>My Skills</h2>
           <p>Tools and abilities I am developing</p>
         </div>
+
         <div class="skill-list">
           <span>HTML</span>
           <span>CSS</span>
@@ -70,18 +373,33 @@
           <h2>My Projects</h2>
           <p>Some of my work and experiences</p>
         </div>
+
         <div class="cards">
           <article class="card">
             <h3>Project One</h3>
-            <p>Introduce your first project, including its purpose, content, and what you learned.</p>
+
+            <p>
+              Introduce your first project, including its purpose,
+              content, and what you learned from the experience.
+            </p>
           </article>
+
           <article class="card">
             <h3>Project Two</h3>
-            <p>Introduce your second project. You can also add a project image and website link.</p>
+
+            <p>
+              Introduce your second project. You can also add a
+              project image and a link to the completed work.
+            </p>
           </article>
+
           <article class="card">
             <h3>Project Three</h3>
-            <p>Share a personal experience, volunteer activity, competition, or achievement.</p>
+
+            <p>
+              Share a personal experience, volunteer activity,
+              competition, or another important achievement.
+            </p>
           </article>
         </div>
       </div>
@@ -93,17 +411,29 @@
           <h2>Contact Me</h2>
           <p>Let's connect</p>
         </div>
+
         <div class="contact-box">
-          <p>Email: yourname@example.com</p>
+          <p>
+            Email: yourname@example.com
+          </p>
+
           <br>
-          <a class="button" href="mailto:yourname@example.com">Send an Email</a>
+
+          <a
+            class="button"
+            href="mailto:yourname@example.com"
+          >
+            Send an Email
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Your Name · Personal Website</p>
+    <p>
+      © 2026 Yutian Zhang · Personal Website
+    </p>
   </footer>
 </body>
 </html>
