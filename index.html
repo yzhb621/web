@@ -4,9 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Yutian Zhang | Personal Website</title>
+  <meta
+    name="description"
+    content="Portfolio of Yutian Zhang, a Junior Software Engineer with experience in cloud applications, AI integration, software testing, and technical support."
+  >
+
+  <title>Yutian Zhang | Junior Software Engineer</title>
 
   <style>
+    :root {
+      --primary: #087ea4;
+      --primary-dark: #065f7c;
+      --accent: #dff5fb;
+      --heading: #152033;
+      --text: #4d586b;
+      --background: #f5f8fb;
+      --white: #ffffff;
+      --border: #dbe5eb;
+      --shadow: 0 12px 35px rgba(21, 32, 51, 0.08);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,252 +32,704 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
-      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
-      color: #243047;
-      background: #f6f8fc;
+      color: var(--text);
+      background: var(--background);
     }
 
     .container {
-      width: min(1100px, 90%);
-      margin: auto;
+      width: min(1120px, 90%);
+      margin: 0 auto;
     }
 
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(10px);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 18px rgba(21, 32, 51, 0.08);
+      backdrop-filter: blur(12px);
     }
 
     nav .container {
-      min-height: 70px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 25px;
     }
 
     .logo {
-      color: #526ee8;
-      font-size: 22px;
-      font-weight: bold;
+      color: var(--primary);
+      font-size: 21px;
+      font-weight: 700;
+      text-decoration: none;
     }
 
     nav ul {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
     nav a {
-      color: #243047;
+      color: var(--heading);
+      font-size: 15px;
+      font-weight: 600;
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: #526ee8;
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--primary);
     }
 
     .hero {
       min-height: 100vh;
-      padding-top: 90px;
+      padding: 120px 0 80px;
       display: flex;
       align-items: center;
       background:
         radial-gradient(
-          circle at 80% 20%,
-          #dfe5ff 0,
-          transparent 35%
+          circle at 85% 15%,
+          rgba(8, 126, 164, 0.18),
+          transparent 32%
         ),
-        linear-gradient(135deg, #f7f9ff, #eef2ff);
+        linear-gradient(135deg, #f8fcfd, #eaf6fa);
     }
 
     .hero-content {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 60px;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 70px;
       align-items: center;
     }
 
-    .welcome {
-      color: #526ee8;
-      font-weight: bold;
+    .eyebrow {
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-weight: 700;
       letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     h1 {
-      margin: 12px 0;
-      color: #16203a;
-      font-size: clamp(45px, 7vw, 76px);
-      line-height: 1.1;
+      margin-bottom: 14px;
+      color: var(--heading);
+      font-size: clamp(48px, 7vw, 78px);
+      line-height: 1.08;
     }
 
     .hero h2 {
-      margin-bottom: 20px;
-      font-size: 26px;
-      font-weight: normal;
+      margin-bottom: 22px;
+      color: var(--primary-dark);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 500;
     }
 
-    .hero p {
-      max-width: 600px;
+    .hero-description {
+      max-width: 700px;
       margin-bottom: 30px;
-      color: #667085;
       font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
     }
 
     .button {
       display: inline-block;
       padding: 13px 25px;
+      border: 2px solid var(--primary);
       border-radius: 30px;
-      background: #526ee8;
-      color: white;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
       text-decoration: none;
       transition:
-        transform 0.2s,
-        box-shadow 0.2s;
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(82, 110, 232, 0.3);
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-5px);
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      box-shadow: 0 10px 25px rgba(8, 126, 164, 0.25);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: var(--primary);
+      color: var(--white);
     }
 
     .avatar {
-      width: 320px;
-      height: 320px;
+      width: 300px;
+      height: 300px;
       margin: auto;
-      border: 10px solid white;
+      border: 10px solid var(--white);
       border-radius: 50%;
-      box-shadow: 0 20px 50px rgba(82, 110, 232, 0.25);
+      box-shadow: 0 20px 50px rgba(8, 126, 164, 0.22);
       object-fit: cover;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .avatar:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow:
+        0 30px 60px rgba(8, 126, 164, 0.30),
+        0 10px 25px rgba(21, 32, 51, 0.12);
     }
 
     section {
-      padding: 100px 0;
+      padding: 95px 0;
     }
 
-    .section-title {
-      margin-bottom: 50px;
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 50px;
       text-align: center;
     }
 
-    .section-title h2 {
-      color: #16203a;
-      font-size: 36px;
+    .section-heading h2 {
+      margin-bottom: 8px;
+      color: var(--heading);
+      font-size: 38px;
     }
 
-    .section-title p {
-      color: #7a8499;
+    .section-heading p {
+      color: #748094;
     }
 
-    .about-box,
-    .contact-box {
-      padding: 40px;
+    .content-box {
+      padding: 38px;
+      border: 1px solid var(--border);
       border-radius: 20px;
-      background: white;
-      box-shadow: 0 12px 35px rgba(31, 42, 68, 0.08);
+      background: var(--white);
+      box-shadow: var(--shadow);
     }
 
-    #skills {
-      background: #edf1ff;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 26px;
     }
 
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .about-text p + p {
+      margin-top: 18px;
+    }
+
+    .quick-details {
+      display: grid;
       gap: 15px;
     }
 
-    .skill-list span {
-      padding: 12px 20px;
-      border-radius: 30px;
-      background: white;
-      box-shadow: 0 5px 15px rgba(31, 42, 68, 0.08);
+    .detail {
+      padding: 17px;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      background: var(--accent);
     }
 
-    .cards {
+    .detail strong {
+      display: block;
+      color: var(--heading);
+    }
+
+    #skills,
+    #projects {
+      background: #eaf5f9;
+    }
+
+    .skill-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
-    .card {
+    .skill-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-card h3 {
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-size: 19px;
+      transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .skill-card:hover h3 {
+      color: var(--primary-dark);
+      transform: translateX(5px);
+    }
+
+    .skill-card ul {
+      padding-left: 20px;
+    }
+
+    .skill-card li + li {
+      margin-top: 7px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 920px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 10px;
+      width: 3px;
+      background: var(--primary);
+      content: "";
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+      padding-left: 45px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      position: absolute;
+      top: 8px;
+      left: 3px;
+      width: 17px;
+      height: 17px;
+      border: 4px solid var(--white);
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary);
+      content: "";
+    }
+
+    .timeline-card {
       padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-header {
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .timeline-card h3 {
+      color: var(--heading);
+      font-size: 21px;
+    }
+
+    .organisation {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .date {
+      flex-shrink: 0;
+      padding: 5px 11px;
+      border-radius: 20px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .timeline-card ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    .timeline-card li + li {
+      margin-top: 7px;
+    }
+
+    .project-grid {
+      display: grid;
+      gap: 25px;
+    }
+
+    .project-card {
+      padding: 30px;
+      border: 1px solid var(--border);
       border-radius: 18px;
-      background: white;
-      box-shadow: 0 10px 30px rgba(31, 42, 68, 0.07);
-      transition: transform 0.2s;
+      background: var(--white);
+      box-shadow: var(--shadow);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
+    .project-header {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      color: #526ee8;
+    .project-card h3 {
+      color: var(--heading);
+      font-size: 22px;
+      transition:
+        color 0.3s ease,
+        transform 0.3s ease;
     }
 
-    .card p {
-      color: #667085;
+    .project-card:hover h3 {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .project-role {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .project-card ul {
+      padding-left: 20px;
+    }
+
+    .project-card li + li {
+      margin-top: 8px;
+    }
+
+    .tags {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        color 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-3px) scale(1.05);
+      color: var(--white);
+      background: var(--primary);
+    }
+
+    .award {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 4px solid #d99b16;
+      border-radius: 8px;
+      background: #fff8e6;
+      color: #70500d;
+      font-weight: 700;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .education-card {
+      padding: 30px;
+      border-top: 5px solid var(--primary);
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .education-card h3 {
+      margin-bottom: 8px;
+      color: var(--heading);
+      font-size: 22px;
+    }
+
+    .university {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .education-date {
+      margin-top: 12px;
+      color: #748094;
+    }
+
+    #contact {
+      background: var(--heading);
+      color: #dce4ef;
+    }
+
+    #contact .section-heading h2 {
+      color: var(--white);
+    }
+
+    #contact .section-heading p {
+      color: #b6c2d3;
     }
 
     .contact-box {
-      max-width: 700px;
+      max-width: 720px;
       margin: auto;
+      padding: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
       text-align: center;
+    }
+
+    .contact-box p {
+      margin-bottom: 22px;
+      font-size: 18px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
     }
 
     footer {
       padding: 25px;
-      background: #16203a;
-      color: #d5daea;
+      background: #101726;
+      color: #aeb9ca;
       text-align: center;
     }
 
-    @media (max-width: 760px) {
+    /* Floating card effect */
+    .skill-card,
+    .timeline-card,
+    .project-card,
+    .education-card,
+    .content-box,
+    .detail {
+      position: relative;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+    }
+
+    .skill-card:hover,
+    .timeline-card:hover,
+    .project-card:hover,
+    .education-card:hover,
+    .content-box:hover,
+    .detail:hover {
+      z-index: 2;
+      transform: translateY(-10px);
+      border-color: rgba(8, 126, 164, 0.45);
+      box-shadow:
+        0 22px 45px rgba(8, 126, 164, 0.18),
+        0 8px 18px rgba(21, 32, 51, 0.08);
+    }
+
+    /* Top light animation */
+    .skill-card::before,
+    .timeline-card::before,
+    .project-card::before,
+    .education-card::before,
+    .content-box::before {
+      position: absolute;
+      top: 0;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      border-radius: 10px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary),
+        transparent
+      );
+      opacity: 0;
+      transform: scaleX(0.4);
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+      content: "";
+    }
+
+    .skill-card:hover::before,
+    .timeline-card:hover::before,
+    .project-card:hover::before,
+    .education-card:hover::before,
+    .content-box:hover::before {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* Keyboard accessibility */
+    a:focus-visible {
+      outline: 3px solid rgba(8, 126, 164, 0.4);
+      outline-offset: 4px;
+    }
+
+    /* Mobile touch effect */
+    .skill-card:active,
+    .timeline-card:active,
+    .project-card:active,
+    .education-card:active,
+    .content-box:active,
+    .detail:active,
+    .avatar:active {
+      transform: translateY(-7px) scale(0.99);
+    }
+
+    @media (max-width: 880px) {
       nav .container {
-        flex-direction: column;
         padding: 14px 0;
+        flex-direction: column;
+        gap: 10px;
       }
 
       nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px 16px;
-        font-size: 14px;
+        gap: 10px 17px;
       }
 
       .hero {
-        padding-top: 130px;
+        padding-top: 165px;
+      }
+
+      .hero-content,
+      .about-grid {
+        grid-template-columns: 1fr;
       }
 
       .hero-content {
-        grid-template-columns: 1fr;
-        padding: 60px 0;
         text-align: center;
       }
 
-      .hero p {
+      .hero-description {
         margin-right: auto;
         margin-left: auto;
       }
 
-      .avatar {
-        width: 230px;
-        height: 230px;
+      .hero-buttons {
+        justify-content: center;
       }
 
-      .cards {
+      .avatar {
+        width: 240px;
+        height: 240px;
+      }
+
+      .skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+      html {
+        scroll-padding-top: 145px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .skill-grid,
+      .education-grid {
         grid-template-columns: 1fr;
+      }
+
+      .timeline-header,
+      .project-header {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .content-box,
+      .timeline-card,
+      .project-card,
+      .education-card {
+        padding: 23px;
+      }
+
+      .section-heading h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (hover: none) {
+      .skill-card:hover,
+      .timeline-card:hover,
+      .project-card:hover,
+      .education-card:hover,
+      .content-box:hover,
+      .detail:hover,
+      .avatar:hover {
+        transform: none;
+      }
+
+      .skill-card:active,
+      .timeline-card:active,
+      .project-card:active,
+      .education-card:active,
+      .content-box:active,
+      .detail:active {
+        transform: translateY(-7px) scale(0.99);
+        border-color: rgba(8, 126, 164, 0.45);
+        box-shadow:
+          0 18px 35px rgba(8, 126, 164, 0.18),
+          0 7px 16px rgba(21, 32, 51, 0.08);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
       }
     }
   </style>
@@ -269,28 +738,17 @@
 <body>
   <nav>
     <div class="container">
-      <div class="logo">Yutian Zhang</div>
+      <a class="logo" href="#home">
+        Yutian Zhang
+      </a>
 
       <ul>
-        <li>
-          <a href="#home">Home</a>
-        </li>
-
-        <li>
-          <a href="#about">About Me</a>
-        </li>
-
-        <li>
-          <a href="#skills">Skills</a>
-        </li>
-
-        <li>
-          <a href="#projects">Projects</a>
-        </li>
-
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -298,25 +756,31 @@
   <header class="hero" id="home">
     <div class="container hero-content">
       <div>
-        <div class="welcome">
-          HELLO, WELCOME TO MY WEBSITE
-        </div>
-
-        <h1>I'm Yutian Zhang</h1>
-
-        <h2>
-          Student · Design Enthusiast · Explorer
-        </h2>
-
-        <p>
-          I am passionate about learning new things and sharing
-          my ideas through my work. I hope this website helps
-          you get to know me better.
+        <p class="eyebrow">
+          Welcome to my portfolio
         </p>
 
-        <a class="button" href="#about">
-          Learn More
-        </a>
+        <h1>Yutian Zhang</h1>
+
+        <h2>Junior Software Engineer</h2>
+
+        <p class="hero-description">
+          I develop cloud-based web applications, integrate AI
+          services, test software, and solve technical problems.
+          My experience covers the full software development
+          lifecycle, from requirements analysis and system design
+          to deployment and documentation.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button" href="#projects">
+            View My Projects
+          </a>
+
+          <a class="button secondary" href="#contact">
+            Contact Me
+          </a>
+        </div>
       </div>
 
       <img
@@ -330,76 +794,516 @@
   <main>
     <section id="about">
       <div class="container">
-        <div class="section-title">
+        <div class="section-heading">
           <h2>About Me</h2>
-          <p>Get to know me</p>
+
+          <p>
+            My background and software engineering career direction
+          </p>
         </div>
 
-        <div class="about-box">
-          <p>
-            Hello! My name is Yutian Zhang. I am currently a
-            student studying Your Subject. I enjoy photography,
-            travel, music, and design. I am responsible, curious,
-            and always ready to take on new challenges. In the
-            future, I hope to continue learning and growing in a
-            field that I truly enjoy.
-          </p>
+        <div class="about-grid">
+          <div class="content-box about-text">
+            <p>
+              I hold a Master of Information Technology and a
+              Bachelor of Computer Science from the University of
+              Auckland. I have practical experience developing
+              cloud-based web applications, integrating AI services,
+              testing software, and resolving technical issues.
+            </p>
+
+            <p>
+              I am proficient in JavaScript, Vue.js, Node.js, SQL,
+              AWS, Docker, GitHub, and Claude Code. My experience
+              includes requirements analysis, system design, API
+              integration, functional and integration testing,
+              debugging, deployment, and technical documentation.
+            </p>
+
+            <p>
+              I am seeking an opportunity as a Junior Software
+              Engineer while continuing to develop my expertise in
+              C#, ASP.NET Core, Microsoft Azure, and modern DevOps
+              practices.
+            </p>
+          </div>
+
+          <div class="quick-details">
+            <div class="detail">
+              <strong>Location</strong>
+              Auckland, New Zealand
+            </div>
+
+            <div class="detail">
+              <strong>Relocation</strong>
+              Willing to relocate to Napier
+            </div>
+
+            <div class="detail">
+              <strong>Languages</strong>
+              Mandarin and conversational English
+            </div>
+
+            <div class="detail">
+              <strong>Career Focus</strong>
+              Junior Software Engineering
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="skills">
       <div class="container">
-        <div class="section-title">
-          <h2>My Skills</h2>
-          <p>Tools and abilities I am developing</p>
+        <div class="section-heading">
+          <h2>Technical Skills</h2>
+
+          <p>
+            Technologies and engineering capabilities
+          </p>
         </div>
 
-        <div class="skill-list">
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>Microsoft Office</span>
-          <span>Canva</span>
-          <span>Photography</span>
-          <span>Chinese</span>
-          <span>English</span>
+        <div class="skill-grid">
+          <article class="skill-card">
+            <h3>Programming and Web</h3>
+
+            <ul>
+              <li>JavaScript</li>
+              <li>HTML and CSS</li>
+              <li>Vue.js and Vite</li>
+              <li>Node.js</li>
+              <li>Python</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Cloud and Backend</h3>
+
+            <ul>
+              <li>AWS Lambda</li>
+              <li>API Gateway</li>
+              <li>DynamoDB</li>
+              <li>AWS Bedrock and AWS Lex</li>
+              <li>Amazon Connect</li>
+              <li>REST API integration</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Databases</h3>
+
+            <ul>
+              <li>SQL</li>
+              <li>DynamoDB</li>
+              <li>Database design</li>
+              <li>Data management</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>DevOps and Tools</h3>
+
+            <ul>
+              <li>Docker</li>
+              <li>Git and GitHub</li>
+              <li>Linux</li>
+              <li>Agile development</li>
+              <li>Version control</li>
+              <li>Testing and debugging</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>AI-Assisted Development</h3>
+
+            <ul>
+              <li>Claude Code</li>
+              <li>Codebase analysis</li>
+              <li>Code generation</li>
+              <li>Debugging and refactoring</li>
+              <li>Technical documentation</li>
+              <li>Workflow improvement</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Currently Developing</h3>
+
+            <ul>
+              <li>C#</li>
+              <li>ASP.NET Core</li>
+              <li>Microsoft Azure</li>
+              <li>Azure DevOps</li>
+              <li>Terraform</li>
+              <li>CI/CD</li>
+              <li>Infrastructure as code</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Professional Experience</h2>
+
+          <p>
+            Technical support, testing, and problem-solving experience
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Technical Support Intern</h3>
+
+                  <p class="organisation">
+                    Huawei Technologies (New Zealand) Company Limited
+                  </p>
+                </div>
+
+                <span class="date">
+                  Feb 2026 - Jul 2026
+                </span>
+              </div>
+
+              <ul>
+                <li>
+                  Supported the installation, configuration,
+                  commissioning, and functional testing of
+                  telecommunications and network equipment.
+                </li>
+
+                <li>
+                  Assisted with firmware verification, system
+                  validation, and product testing against technical
+                  requirements.
+                </li>
+
+                <li>
+                  Investigated technical issues, reproduced reported
+                  faults, and documented findings.
+                </li>
+
+                <li>
+                  Worked with engineers to troubleshoot system,
+                  connectivity, and equipment-related problems.
+                </li>
+
+                <li>
+                  Assisted with on-site technical support and
+                  communicated with customers to investigate
+                  reported issues.
+                </li>
+
+                <li>
+                  Prepared technical documentation, testing records,
+                  and issue reports.
+                </li>
+
+                <li>
+                  Identified recurring issues and suggested
+                  improvements to troubleshooting processes and
+                  system reliability.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Technical Support Intern</h3>
+
+                  <p class="organisation">
+                    TCL Technology Group Corporation, China
+                  </p>
+                </div>
+
+                <span class="date">
+                  Jul 2025 - Jan 2026
+                </span>
+              </div>
+
+              <ul>
+                <li>
+                  Provided customer technical support, including
+                  system configuration, troubleshooting, and issue
+                  resolution.
+                </li>
+
+                <li>
+                  Investigated customer-reported issues, reproduced
+                  faults, documented findings, and escalated complex
+                  incidents.
+                </li>
+
+                <li>
+                  Assisted with product testing, system validation,
+                  firmware verification, and defect identification.
+                </li>
+
+                <li>
+                  Worked with technical team members to diagnose
+                  issues and support timely problem resolution.
+                </li>
+
+                <li>
+                  Prepared and maintained technical documentation,
+                  testing records, and issue reports.
+                </li>
+
+                <li>
+                  Suggested improvements to support processes and
+                  product reliability.
+                </li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="projects">
       <div class="container">
-        <div class="section-title">
-          <h2>My Projects</h2>
-          <p>Some of my work and experiences</p>
+        <div class="section-heading">
+          <h2>Projects</h2>
+
+          <p>
+            Software development, cloud, AI, and consultancy projects
+          </p>
         </div>
 
-        <div class="cards">
-          <article class="card">
-            <h3>Project One</h3>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3>Cloud-Based AI Appointment Platform</h3>
 
-            <p>
-              Introduce your first project, including its purpose,
-              content, and what you learned from the experience.
-            </p>
+                <p class="project-role">
+                  Project Manager and Technical Contributor
+                </p>
+              </div>
+
+              <span class="date">
+                Jul 2024 - Nov 2024
+              </span>
+            </div>
+
+            <ul>
+              <li>
+                Led the development of a multilingual, cloud-based
+                healthcare appointment platform.
+              </li>
+
+              <li>
+                Contributed to requirements analysis, system design,
+                development, integration, testing, troubleshooting,
+                and deployment.
+              </li>
+
+              <li>
+                Developed and integrated REST APIs for appointment
+                booking, user verification, and frontend-backend
+                communication.
+              </li>
+
+              <li>
+                Implemented JWT-based access control and
+                TLS-protected data transmission.
+              </li>
+
+              <li>
+                Integrated conversational booking using AWS Bedrock,
+                AWS Lex, and Amazon Connect.
+              </li>
+
+              <li>
+                Used GitHub for version control, collaboration,
+                issue tracking, and code management.
+              </li>
+
+              <li>
+                Conducted functional and integration testing,
+                identified defects, and debugged software issues.
+              </li>
+
+              <li>
+                Collaborated with stakeholders to gather
+                requirements and prioritise features.
+              </li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">Vite</span>
+              <span class="tag">AWS Lambda</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">Docker</span>
+              <span class="tag">AWS Bedrock</span>
+              <span class="tag">AWS Lex</span>
+              <span class="tag">Amazon Connect</span>
+              <span class="tag">JWT</span>
+            </div>
+
+            <div class="award">
+              Awards: Best Design and Best Presentation
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Project Two</h3>
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3>IT Consultancy and SAP Support Project</h3>
 
-            <p>
-              Introduce your second project. You can also add a
-              project image and a link to the completed work.
-            </p>
+                <p class="project-role">
+                  University of Auckland SAP Project
+                </p>
+              </div>
+
+              <span class="date">
+                Mar 2024 - Jun 2024
+              </span>
+            </div>
+
+            <ul>
+              <li>
+                Analysed business requirements and SAP-related
+                workflows to identify process improvements.
+              </li>
+
+              <li>
+                Worked with stakeholders to understand operational
+                challenges and translate business needs into
+                technology recommendations.
+              </li>
+
+              <li>
+                Assisted with troubleshooting system and workflow
+                issues affecting business users.
+              </li>
+
+              <li>
+                Produced project documentation and presented
+                recommendations to technical and non-technical
+                stakeholders.
+              </li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">SAP</span>
+              <span class="tag">Business Analysis</span>
+              <span class="tag">Troubleshooting</span>
+              <span class="tag">Documentation</span>
+              <span class="tag">Stakeholder Communication</span>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Project Three</h3>
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3>Online Network Application System</h3>
 
-            <p>
-              Share a personal experience, volunteer activity,
-              competition, or another important achievement.
+                <p class="project-role">
+                  University of Auckland Capstone Course
+                </p>
+              </div>
+
+              <span class="date">
+                Mar 2023 - Jul 2023
+              </span>
+            </div>
+
+            <ul>
+              <li>
+                Designed and developed an online system for network
+                service applications and administrative workflows.
+              </li>
+
+              <li>
+                Participated in requirements analysis, application
+                design, development, testing, deployment, and
+                ongoing support.
+              </li>
+
+              <li>
+                Developed user-facing functionality and
+                database-backed workflows to replace manual
+                processes.
+              </li>
+
+              <li>
+                Conducted functional testing and resolved issues
+                discovered during development and early operation.
+              </li>
+
+              <li>
+                Produced technical and user documentation to support
+                implementation and adoption.
+              </li>
+
+              <li>
+                Successfully deployed the system, which remained in
+                stable operation in the university environment.
+              </li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">System Design</span>
+              <span class="tag">Web Development</span>
+              <span class="tag">Database Workflows</span>
+              <span class="tag">Testing</span>
+              <span class="tag">Deployment</span>
+              <span class="tag">Documentation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Education</h2>
+
+          <p>
+            Academic background in computer science and information
+            technology
+          </p>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card">
+            <h3>Master of Information Technology</h3>
+
+            <p class="university">
+              University of Auckland
             </p>
+
+            <p class="education-date">
+              July 2023 - June 2025
+            </p>
+
+            <p>Auckland, New Zealand</p>
+          </article>
+
+          <article class="education-card">
+            <h3>Bachelor of Computer Science</h3>
+
+            <p class="university">
+              University of Auckland
+            </p>
+
+            <p class="education-date">
+              July 2020 - June 2023
+            </p>
+
+            <p>Auckland, New Zealand</p>
           </article>
         </div>
       </div>
@@ -407,24 +1311,35 @@
 
     <section id="contact">
       <div class="container">
-        <div class="section-title">
+        <div class="section-heading">
           <h2>Contact Me</h2>
-          <p>Let's connect</p>
+
+          <p>
+            I am interested in Junior Software Engineer opportunities.
+          </p>
         </div>
 
         <div class="contact-box">
           <p>
-            Email: yourname@example.com
+            Please contact me to discuss software engineering,
+            development projects, or professional opportunities.
           </p>
 
-          <br>
+          <div class="contact-links">
+            <a
+              class="button"
+              href="mailto:yutianzyt@gmail.com"
+            >
+              Email Me
+            </a>
 
-          <a
-            class="button"
-            href="mailto:yourname@example.com"
-          >
-            Send an Email
-          </a>
+            <a
+              class="button secondary"
+              href="#home"
+            >
+              Back to Top
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -432,7 +1347,7 @@
 
   <footer>
     <p>
-      © 2026 Yutian Zhang · Personal Website
+      © 2026 Yutian Zhang · Junior Software Engineer Portfolio
     </p>
   </footer>
 </body>
